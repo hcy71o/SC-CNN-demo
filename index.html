@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head style="text-align: center;">
-    <title>SC-CNN-demo: "An Effective Style Conditioning Method
-      for Zero-Shot Text-to-Speech Systems"</title>
+    <title>SC-CNN-demo: "Effective Speaker Conditioning Method
+      for Zero-Shot Multi-Speaker Text-to-Speech Systems"</title>
     <style>
       div {
         margin-bottom: 64px;
@@ -12,6 +12,7 @@
         white-space: nowrap;
       }
       .text {
+        width: 250px; 
         font-style: italic;
         color: #666666;
       }
@@ -26,8 +27,8 @@
   <body style="text-align: center;">
     <article>
       <header>
-        <h1>SC-CNN-demo: "An Effective Style Conditioning Method
-          for Zero-Shot Text-to-Speech Systems"</h1>
+        <h1>SC-CNN-demo: "Effective Speaker Conditioning Method
+          for Zero-Shot Multi-Speaker Text-to-Speech Systems"</h1>
       </header>
     </article>
       <a style="margin: 0 auto;"><b>Authors</b>: Hyungchan Yoon, Chanhwan Kim, Seyun Um, Hyun-Wook Yoon, Hong-Goo Kang</a>
@@ -38,26 +39,25 @@
     <div>
       <a name="ss"><h2>Abstract</h2></a>
       </td>
-      <div class="container" style="max-width:700px; text-align: center; margin:0 auto; margin-top: 20px; margin-bottom: 40px">
+      <div class="container" style="max-width:660px; text-align: center; margin:0 auto; margin-top: 20px; margin-bottom: 40px">
         <p style="line-height:1.2;">
-          This letter proposes an efficient style/speaker- conditioning method that is applicable to zero-shot text-to-speech (TTS) systems. Based on the inductive bias in the speech generation task, in which local context information in text/phoneme sequences heavily affect the style of the output speech, we propose a Style- Conditional Convolutional Neural Network (SC-CNN) for the zero- shot TTS task. SC-CNN first predicts convolutional kernels from each learned style representation, then applies 1-D convolutions to phoneme sequences with the predicted kernels. It utilizes the aforementioned inductive bias and effectively models the style of speech by providing the style-specific local context in phonetic domain. To make a fair comparison with conventional style conditioning methods under the same setup, we also build FastSpeech 2-based zero-shot TTS systems for performance evaluation. The results confirm that SC-CNN outperforms the conventional methods that have been used in recent zero-shot TTS models in terms of both subjective and objective measurements.
+          This letter proposes an effective speaker-conditioning method that is applicable to zero-shot multi-speaker text-to-speech (ZSM-TTS) systems. Based on the inductive bias in the speech generation task, in which local context information in text/phoneme sequences heavily affect the speaker characteristics of the output speech, we propose a Speaker-Conditional Convolutional Neural Network (SC-CNN) for the ZSM-TTS task. SC-CNN first predicts convolutional kernels from each learned speaker embedding, then applies 1-D convolutions to phoneme sequences with the predicted kernels.It utilizes the aforementioned inductive bias and effectively models the characteristic of speech by providing the speaker-specific local context in phonetic domain.We also build both FastSpeech2 and VITS-based ZSM-TTS systems to verify its superiority over conventional speaker conditioning methods.The results confirm that the models with SC-CNN outperform the recent ZSM-TTS models in terms of both subjective and objective measurements.
         </p>
       </div>
       <hr>
       <a name="ss"><h2>VCTK zero-shot inference</h2></a>
-      <a name="ss"><h3>Section 1. Non-parallel style transfer: Text input does not correspond to reference speech.</h3></a>
-      <h4>Do generated audios show high naturalness and intelligibility?</h4>
+      <a name="ss"><h3>Section 1. FastSpeech2 system</h3></a>
       <h4>[16000Hz]</h4>
       <table>
         <tbody>
           <tr>
             <td>
               <tr>
-                <td class="first-col"><h4>Reference Speech</h4></td>
-                <td><audio controls="" preload="none"><source src="wavs/NP/16/REF/p269_112_REF.wav"></audio></td>
-                <td><audio controls="" preload="none"><source src="wavs/NP/16/REF/p298_158_REF.wav"></audio></td>
-                <td><audio controls="" preload="none"><source src="wavs/NP/16/REF/p311_210_REF.wav"></audio></td>
-                <td><audio controls="" preload="none"><source src="wavs/NP/16/REF/p314_179_REF.wav"></audio></td>
+                <td class="first-col"><h4>GT (16kHz)</h4></td>
+                <td><audio controls="" preload="none"><source src="wavs/GT/p245_094.wav"></audio></td>
+                <td><audio controls="" preload="none"><source src="wavs/GT/p326_191.wav"></audio></td>
+                <td><audio controls="" preload="none"><source src="wavs/GT/p335_312.wav"></audio></td>
+                <td><audio controls="" preload="none"><source src="wavs/GT/p347_011.wav"></audio></td>
               </tr>
           </tr>
           <tr>
@@ -65,24 +65,24 @@
               <h4>Synthesized text</h4>
             </td>
             <td class="text"> 
-              To the Hebrews it was a token that there would be no more universal floods. 
+              We want to get to the final, anyway.
             </td>
             <td class="text">
-              There were no passengers on board.
+              I feel really good.
             </td>
             <td class="text">
-              They also intend to travel today.
+              He wasn't ready to cope with the pressures.
             </td>
             <td class="text">
-              It opens the door to the Champions League.
+              When a man looks for something beyond his reach, his friends say he is looking for the pot of gold at the end of the rainbow.
             </td>
           </tr>
         <tr>
           <td class="first-col">ZS-FastSpeech 2</td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/16/M1/p269_112_To_the_Heb.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/16/M1/p298_158_There_were.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/16/M1/p311_210_They_also_.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/16/M1/p314_179_It_opens_t.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/FS2/p245_094.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/FS2/p326_191.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/FS2/p335_312.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/FS2/p347_011.wav"></audio></td>
         </tr>
         <!-- <tr>
           <td class="first-col">ZS-AdaSpeech</td>
@@ -93,31 +93,46 @@
         </tr> -->
         <tr>
           <td class="first-col">StyleSpeech</td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/16/M3/p269_112_To_the_Heb.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/16/M3/p298_158_There_were.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/16/M3/p311_210_They_also_.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/16/M3/p314_179_It_opens_t.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/SS/p245_094.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/SS/p326_191.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/SS/p335_312.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/SS/p347_011.wav"></audio></td>
         </tr>
         <tr>
-          <td class="first-col">SC-CNN</td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/16/M4/p269_112_To_the_Heb.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/16/M4/p298_158_There_were.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/16/M4/p311_210_They_also_.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/16/M4/p314_179_It_opens_t.wav"></audio></td>
+          <td class="first-col">SC-StyleSpeech</td>
+          <td><audio controls="" preload="none"><source src="wavs/SCS/p245_094.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/SCS/p326_191.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/SCS/p335_312.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/SCS/p347_011.wav"></audio></td>
+        </tr>
+        <tr>
+          <td class="first-col">w/o DS</td>
+          <td><audio controls="" preload="none"><source src="wavs/woDS/p245_094.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/woDS/p326_191.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/woDS/p335_312.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/woDS/p347_011.wav"></audio></td>
+        </tr>
+        <tr>
+          <td class="first-col">w/o WN</td>
+          <td><audio controls="" preload="none"><source src="wavs/woWN/p245_094.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/woWN/p326_191.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/woWN/p335_312.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/woWN/p347_011.wav"></audio></td>
         </tr>
         </tbody>
       </table>
+      <a name="ss"><h3>Section 2. VITS system</h3></a>
       <h4>[22050Hz]</h4>
       <table>
         <tbody>
           <tr>
             <td>
               <tr>
-                <td class="first-col"><h4>Reference Speech</h4></td>
-                <td><audio controls="" preload="none"><source src="wavs/NP/22/REF/p269_112_REF.wav"></audio></td>
-                <td><audio controls="" preload="none"><source src="wavs/NP/22/REF/p298_158_REF.wav"></audio></td>
-                <td><audio controls="" preload="none"><source src="wavs/NP/22/REF/p311_210_REF.wav"></audio></td>
-                <td><audio controls="" preload="none"><source src="wavs/NP/22/REF/p314_179_REF.wav"></audio></td>
+                <td class="first-col"><h4>GT (22.05kHz)</h4></td>
+                <td><audio controls="" preload="none"><source src="wavs/GT22/p225_045.wav"></audio></td>
+                <td><audio controls="" preload="none"><source src="wavs/GT22/p234_283.wav"></audio></td>
+                <td><audio controls="" preload="none"><source src="wavs/GT22/p238_350.wav"></audio></td>
+                <td><audio controls="" preload="none"><source src="wavs/GT22/p261_020.wav"></audio></td>
               </tr>
           </tr>
           <tr>
@@ -126,170 +141,36 @@
             </td>
           </td>
           <td class="text"> 
-            To the Hebrews it was a token that there would be no more universal floods. 
+            People were determined to change the Government in the last election.
           </td>
           <td class="text">
-            There were no passengers on board.
+            In fact, he is not even in the squad for the game.
           </td>
           <td class="text">
-            They also intend to travel today.
+            What kind of man does that, Mr Dick ?
           </td>
           <td class="text">
-            It opens the door to the Champions League.
+            Many complicated ideas about the rainbow have been formed. 
           </td>
           </tr>
         <tr>
-          <td class="first-col">ZS-FastSpeech 2</td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M1/p269_112_To_the_Heb.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M1/p298_158_There_were.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M1/p311_210_They_also_.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M1/p314_179_It_opens_t.wav"></audio></td>
+          <td class="first-col">TransferTTS</td>
+          <td><audio controls="" preload="none"><source src="wavs/ZSV/p225_045.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/ZSV/p234_283.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/ZSV/p238_350.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/ZSV/p261_020.wav"></audio></td>
         </tr>
         <tr>
-          <td class="first-col">ZS-AdaSpeech</td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M2/p269_112_To_the_Heb.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M2/p298_158_There_were.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M2/p311_210_They_also_.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M2/p314_179_It_opens_t.wav"></audio></td>
-        </tr>
-        <tr>
-          <td class="first-col">StyleSpeech</td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M3/p269_112_To_the_Heb.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M3/p298_158_There_were.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M3/p311_210_They_also_.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M3/p314_179_It_opens_t.wav"></audio></td>
-        </tr>
-        <tr>
-          <td class="first-col">SC-CNN</td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M4/p269_112_To_the_Heb.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M4/p298_158_There_were.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M4/p311_210_They_also_.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/NP/22/M4/p314_179_It_opens_t.wav"></audio></td>
+          <td class="first-col">SC-TransferTTS</td>
+          <td><audio controls="" preload="none"><source src="wavs/SCV/p225_045.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/SCV/p234_283.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/SCV/p238_350.wav"></audio></td>
+          <td><audio controls="" preload="none"><source src="wavs/SCV/p261_020.wav"></audio></td>
         </tr>
         </tbody>
       </table>
     </div>
     <div>
-      <a name="ss"><h3>Section 2. Parallel style transfer: Text input corresponds to reference speech.</h3></a>
-      <h4>Do generated audios follow the style of reference speech?</h4>
-      <h4>[16000Hz]</h4>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <tr>
-                <td class="first-col"><h4>Reference Speech</h4></td>
-                <td><audio controls="" preload="none"><source src="wavs/P/16/REF/p299_160_REF.wav"></audio></td>
-                <td><audio controls="" preload="none"><source src="wavs/P/16/REF/p300_251_REF.wav"></audio></td>
-                <td><audio controls="" preload="none"><source src="wavs/P/16/REF/p334_142_REF.wav"></audio></td>
-                <td><audio controls="" preload="none"><source src="wavs/P/16/REF/p363_042_REF.wav"></audio></td>
-              </tr>
-          </tr>
-          <tr>
-            <td class="first-col">
-              <h4>Synthesized text</h4>
-            </td>
-            <td class="text"> 
-              Meanwhile, the problems of Ball continue to multiply.
-            </td>
-            <td class="text">
-              I am totally horrified by the sentence.
-            </td>
-            <td class="text">
-              That will come after the game on Saturday.
-            </td>
-            <td class="text">
-              There is a new confidence about the club.
-            </td>
-          </tr>
-          <tr>
-            <td class="first-col">ZS-FastSpeech 2</td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M1/p299_160_Meanwhile,.wav"></audio></td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M1/p300_251_I_am_total.wav"></audio></td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M1/p334_142_That_will_.wav"></audio></td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M1/p363_042_There_is_a.wav"></audio></td>
-          </tr>
-          <!-- <tr>
-            <td class="first-col">ZS-AdaSpeech</td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M2/p299_160_Meanwhile,.wav"></audio></td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M2/p300_251_I_am_total.wav"></audio></td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M2/p334_142_That_will_.wav"></audio></td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M2/p363_042_There_is_a.wav"></audio></td>
-          </tr> -->
-          <tr>
-            <td class="first-col">StyleSpeech</td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M3/p299_160_Meanwhile,.wav"></audio></td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M3/p300_251_I_am_total.wav"></audio></td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M3/p334_142_That_will_.wav"></audio></td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M3/p363_042_There_is_a.wav"></audio></td>
-          </tr>
-          <tr>
-            <td class="first-col">SC-CNN</td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M4/p299_160_Meanwhile,.wav"></audio></td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M4/p300_251_I_am_total.wav"></audio></td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M4/p334_142_That_will_.wav"></audio></td>
-            <td><audio controls="" preload="none"><source src="wavs/P/16/M4/p363_042_There_is_a.wav"></audio></td>
-          </tr>
-        </tbody>
-      </table>
-      <h4>[22050Hz]</h4>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <tr>
-                <td class="first-col"><h4>Reference Speech</h4></td>
-                <td><audio controls="" preload="none"><source src="wavs/P/22/REF/p299_160_REF.wav"></audio></td>
-                <td><audio controls="" preload="none"><source src="wavs/P/22/REF/p300_251_REF.wav"></audio></td>
-                <td><audio controls="" preload="none"><source src="wavs/P/22/REF/p334_142_REF.wav"></audio></td>
-                <td><audio controls="" preload="none"><source src="wavs/P/22/REF/p363_042_REF.wav"></audio></td>
-              </tr>
-          </tr>
-          <tr>
-            <td class="first-col">
-              <h4>Synthesized text</h4>
-            </td>
-            <td class="text"> 
-              Meanwhile, the problems of Ball continue to multiply.
-            </td>
-            <td class="text">
-              I am totally horrified by the sentence.
-            </td>
-            <td class="text">
-              That will come after the game on Saturday.
-            </td>
-            <td class="text">
-              There is a new confidence about the club.
-            </td>
-          </tr>
-        <tr>
-          <td class="first-col">ZS-FastSpeech 2</td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M1/p299_160_Meanwhile,.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M1/p300_251_I_am_total.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M1/p334_142_That_will_.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M1/p363_042_There_is_a.wav"></audio></td>
-        </tr>
-        <tr>
-          <td class="first-col">ZS-AdaSpeech</td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M2/p299_160_Meanwhile,.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M2/p300_251_I_am_total.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M2/p334_142_That_will_.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M2/p363_042_There_is_a.wav"></audio></td>
-        </tr>
-        <tr>
-          <td class="first-col">StyleSpeech</td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M3/p299_160_Meanwhile,.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M3/p300_251_I_am_total.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M3/p334_142_That_will_.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M3/p363_042_There_is_a.wav"></audio></td>
-        </tr>
-        <tr>
-          <td class="first-col">SC-CNN</td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M4/p299_160_Meanwhile,.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M4/p300_251_I_am_total.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M4/p334_142_That_will_.wav"></audio></td>
-          <td><audio controls="" preload="none"><source src="wavs/P/22/M4/p363_042_There_is_a.wav"></audio></td>
-        </tr>
         </tbody>
       </table>
     </div>
